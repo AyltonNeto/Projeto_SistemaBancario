@@ -1,21 +1,26 @@
-# Digital Innovation One - Prática .NET
+# Desafio de Projeto: Criando um Sistema Bancário
+Esse desafio foi proposto pela DIO em seu Bootcamp sobre Ciência de Dados.
 
-## Criando uma APP de cadastro em memória
+## 1ª Versão
+Para a primeira versão do sistema devemos implementar apenas 3 operações: depósito, saque e extrato. 
+Nessa versão, só existira 1 cliente.
 
-[Slides](dio-dotnet-poo-lab-2.pdf)
+### Detalhes
+#### Depósito
+- Valores sempre positivos;
+- Armazenados em uma variável;
+- Exibidos no extrato.
 
-## Contato
+#### Saque
+- Permitir até 3 saques diários;
+- Limite de R$500 por saque;
+- Exibir mensagem na falta saldo;
+- Armazenados em uma variável;
+- Exibidos no extrato.
 
-Eliézer Zarpelão
+#### Extrato
+- Listar todos os depósitos e saques;
+- Exibir saldo atual no final.
+- Formato: "R$xxx.xx".
 
-Linkedin:  [br.linkedin.com/in/eliezerzarpelao](http://br.linkedin.com/in/eliezerzarpelao)
 
-WebSite:  [eliezerzarpelao.eti.br](https://eliezerzarpelao.eti.br)
-
-Instagram:  [instagram.com/eliezerzarpelao](https://instagram.com/eliezerzarpelao)
-
-YouTube:  [youtube.com/channel/UC47RD-s-U6fpKTY0soIUn6g](https://www.youtube.com/channel/UC47RD-s-U6fpKTY0soIUn6g/featured?view_as=subscriber)
-
-Twitter:  [@eliezerzarpelao](https://twitter.com/eliezerzarpelao)
-
-Github:  [github.com/elizarp](https://github.com/elizarp)
