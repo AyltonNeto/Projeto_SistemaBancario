@@ -1,10 +1,10 @@
 # Função para acessar o menu
 def menu():
     print('''\nQual operação deseja realizar?
-[1]Ver Extrato
-[2]Depositar
-[3]Sacar
-[4]Sair
+[E]Extrato
+[D]Depositar
+[S]Sacar
+[Q]Sair
 ''')
     return input()
 
@@ -20,12 +20,12 @@ print('\nBem vindo ao Banco Ipim LTDA!')
 operacao, saque, saldo, cont_saq, cont_dep, limite = 0, 0, 0.0, 0, 0, 500.0
 registros = {}
 
-while operacao != '4':
+while True:
     operacao = menu()
 
 # Operação de Depósito  
-    if operacao == '2':    
-        while operacao == '2':
+    if operacao == 'D' or operacao =='d':    
+        while operacao == 'D' or operacao == 'd':
             valor = input('\nQual valor deseja depositar?(Para retornar ao menu digite[R])\n')
             if numerico(valor) and float(valor) > 0:
                 saldo += float(valor)
@@ -33,23 +33,23 @@ while operacao != '4':
                 cont_dep += 1
                 registros[f'{cont_dep}º Depósito'] = f'{valor}'
                 print('\nRetornando ao menu de operações...')
-                operacao = 0
+                operacao = 'R'
 
             elif valor == 'R' or valor == 'r':
-                operacao = 0
+                operacao = 'R'
 
             else: print('\nDefina um valor possível!')
 
 # Operação de Saque
-    elif operacao == '3':
-        while operacao == '3':
+    elif operacao == 'S' or operacao == 's':
+        while operacao == 'S' or operacao == 's':
             valor = input('\nQual valor deseja sacar?(Para retornar ao menu digite[R])\n')
             if cont_saq == 3:
                 print('\nLimite de 3 saques diários atingido!')
-                operacao = 0
+                operacao = 'R'
             
             elif valor == 'R' or valor == 'r':
-                operacao = 0
+                operacao = 'R'
             
             elif numerico(valor) and float(valor) > saldo:
                 print(f'\nValor maior que saldo disponível!\nSaldo = R${saldo}0')
@@ -60,7 +60,7 @@ while operacao != '4':
                 cont_saq += 1
                 registros[f'{cont_saq}º Saque'] = f'{valor}'
                 print('\nRetornando ao menu de operações...')
-                operacao = 0
+                operacao = 'R'
                 
             elif numerico(valor) and float(valor) > limite:
                 print(f'\nValor superior ao seu limite de saque\nLimite de Saque = R${limite}0')
@@ -69,26 +69,27 @@ while operacao != '4':
                 print('\nDefina um valor possível!')
 
 # Operação de Ver Extrato
-    elif operacao == '1':
-        print('\nExtrato:\n+-----------------------------+')
+    elif operacao == 'E' or operacao == 'e':
+        print('\nExtrato:\n+------------------------------+')
         cont_reg = 0
         for registro, quantia in registros.items():
             cont_reg += 1
-            quantia = f'{float(quantia):,.2f}'
+            quantia = f'{float(quantia):.2f}'
             if "Depósito" in registro:
-                print(f'|{str(cont_reg).zfill(3)} Depósito   +R$ {quantia.ljust(10)}|')
+                print(f'| {str(cont_reg).zfill(3)} Depósito   +R$ {quantia.ljust(10)}|')
             
             else: 
-                print(f'|{str(cont_reg).zfill(3)} Saque      -R$ {quantia.ljust(10)}|')
-        print(f'+-----------------------------+\nSaldo = R$ {float(saldo):.2f}')
+                print(f'| {str(cont_reg).zfill(3)} Saque      -R$ {quantia.ljust(10)}|')
+        print(f'+------------------------------+\nSaldo = R$ {float(saldo):.2f}')
 
 # Sair
-    elif operacao == '4':
+    elif operacao == 'Q' or operacao == 'q':
         print('\nObrigado por utilizar nossos serviços!\n')
+        break
 
 # Menu
-    elif operacao == '0':
+    elif operacao == 'R':
         continue
 
 # Erro
-    else: print('\nOpção Inválida!')
+    else: print('\nOpção Inválida! Por favor, selecione novamente a operação desejada.')
