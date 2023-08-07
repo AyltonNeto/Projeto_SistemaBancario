@@ -1,13 +1,3 @@
-# Função para acessar o menu
-def menu():
-    print('''\nQual operação deseja realizar?
-[E]Extrato
-[D]Depositar
-[S]Sacar
-[Q]Sair
-''')
-    return input()
-
 # Função para confirmar se a entrada é numérica
 def numerico(valor):
     try:
@@ -21,12 +11,18 @@ operacao, saque, saldo, cont_saq, cont_dep, limite = 0, 0, 0.0, 0, 0, 500.0
 registros = {}
 
 while True:
-    operacao = menu()
-
+    operacao = input(
+'''\nQual operação deseja realizar?
+[E]Extrato
+[D]Depositar
+[S]Sacar
+[Q]Sair
+\n''')
+    
 # Operação de Depósito  
     if operacao == 'D' or operacao =='d':    
         while operacao == 'D' or operacao == 'd':
-            valor = input('\nQual valor deseja depositar?(Para retornar ao menu digite[R])\n')
+            valor = input('\nQual valor deseja depositar? Para retornar ao menu digite[R]\n')
             if numerico(valor) and float(valor) > 0:
                 saldo += float(valor)
                 print('\nOperação realizada com sucesso!')
@@ -43,7 +39,7 @@ while True:
 # Operação de Saque
     elif operacao == 'S' or operacao == 's':
         while operacao == 'S' or operacao == 's':
-            valor = input('\nQual valor deseja sacar?(Para retornar ao menu digite[R])\n')
+            valor = input('\nQual valor deseja sacar? Para retornar ao menu digite[R]\n')
             if cont_saq == 3:
                 print('\nLimite de 3 saques diários atingido!')
                 operacao = 'R'
@@ -66,21 +62,24 @@ while True:
                 print(f'\nValor superior ao seu limite de saque\nLimite de Saque = R${limite}0')
             
             else:
-                print('\nDefina um valor possível!')
+                print('\nOperação Falhou! Informe um valor válido!')
 
 # Operação de Ver Extrato
     elif operacao == 'E' or operacao == 'e':
-        print('\nExtrato:\n+------------------------------+')
-        cont_reg = 0
-        for registro, quantia in registros.items():
-            cont_reg += 1
-            quantia = f'{float(quantia):.2f}'
-            if "Depósito" in registro:
-                print(f'| {str(cont_reg).zfill(3)} Depósito   +R$ {quantia.ljust(10)}|')
-            
-            else: 
-                print(f'| {str(cont_reg).zfill(3)} Saque      -R$ {quantia.ljust(10)}|')
-        print(f'+------------------------------+\nSaldo = R$ {float(saldo):.2f}')
+        print('\n+========== EXTRATO ============+')
+        if not registros:
+            print('|Não foram realizadas operações!|')
+        else:
+            cont_reg = 0
+            for registro, quantia in registros.items():
+                cont_reg += 1
+                quantia = f'{float(quantia):.2f}'
+                if "Depósito" in registro:
+                    print(f'| {str(cont_reg).zfill(3)} Depósito   +R$ {quantia.ljust(11)}|')
+                
+                else: 
+                    print(f'| {str(cont_reg).zfill(3)} Saque      -R$ {quantia.ljust(11)}|')
+        print(f'+===============================+\nSaldo = R$ {float(saldo):.2f}')
 
 # Sair
     elif operacao == 'Q' or operacao == 'q':
