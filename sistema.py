@@ -9,7 +9,7 @@ def numerico(valor):
         return False
     return True
 
-def deposito(conta, operacao):
+def deposito(conta, operacao, /):
     while operacao != 'R':
         valor = input('\nQual valor deseja depositar? Para retornar ao menu digite[R]\n')
         if numerico(valor) and float(valor) > 0:
@@ -179,6 +179,7 @@ def main():
                 elif operacao == 'C' or operacao == 'c':
                     criar_conta(AGENCIA, contas, login_cpf, num_conta, usuarios)
                     print('\n=== Conta criada com sucesso! ===')
+                    num_conta += 1
                 # Depósito
                 elif operacao == 'D' or operacao == 'd':
                     deposito(conta, operacao)
