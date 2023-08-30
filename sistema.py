@@ -3,10 +3,8 @@ def menu():
     return operacao
 
 def numerico(valor):
-    try:
-        float(valor)
-    except ValueError:
-        return False
+    try: float(valor)
+    except ValueError: return False
     return True
 
 def deposito(conta, operacao, /):
@@ -100,7 +98,7 @@ def criar_usuario(usuarios):
 
 def usuario_repetido(cpf, usuarios):
     for usuario in usuarios:
-        if usuario['CPF'] == cpf: return True, print(f'\nOlá, {usuario["nome"]}!')
+        if usuario['CPF'] == cpf: return True, usuario
     return False
 
 def usuario_possui_conta(cpf, usuarios):
@@ -120,6 +118,8 @@ def selecionar_conta(cpf, contas):
             print(f'\n\tOpção[{cont_conta}]\n\n Saldo:\t\tR${float(conta["saldo"]):.2f}\n Agência:\t{conta["agencia"]}\n C/C:\t\t{conta["numero_conta"]}')
             cont_conta += 1
     conta_escolhida = int(input('\nSelecione a opção com a conta desejada: '))
+    try: contas[conta_escolhida]
+    except IndexError: return print('\n### Opção Invalida! Tente novamente! ###'),selecionar_conta(cpf, contas)
     return contas[conta_escolhida]
 
 def main():
@@ -143,10 +143,12 @@ def main():
                 elif confirmacao == 'N' or confirmacao == 'n':
                     print('\nObrigado por utilizar nossos serviços!\n')
                     break
-                else: print('\nOpção Inválida! Retornando ao menu de login...')
+                else: print('\n### Opção Inválida! ###\nRetornando ao menu de login...')
             elif verificacao == 'S' or verificacao == 's':
                 login_cpf = input('\nDigite o seu CPF: ')
-                if usuario_repetido(login_cpf, usuarios):
+                repetido, usuario = usuario_repetido(login_cpf, usuarios)
+                if repetido:
+                    print(f'\nOlá, {usuario["nome"]}')
                     controle_app = 2
                 else:
                     print('\n### Não foi possível localizar o usuário! ###')
