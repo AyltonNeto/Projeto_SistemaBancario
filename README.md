@@ -53,11 +53,11 @@ Sugestão de Argumentos Nomeados: extrato.
 - Devem ser armazenados somente os números do CPF; 
 - Não deve permitir o cadastro de 2 usuários com o mesmo CPF.
 
-Sugestão de Formatação p/ Endereço: logradouro, nº - bairro - cidade/sigla estado
+Sugestão de Formatação do Endereço: logradouro, nº - bairro - cidade/sigla estado
 
 #### Criar Conta Corrente
 - Deve armazenar as contas em uma lista;
 - Uma conta é composta por: agência, número da conta e usuário.
 - O numero da conta deve ser sequencial, iniciando em 1.
 - O número da agência é fixo: "0001".
-- O usuário pode ter mais de uma conta, mas uma conta, mas uma conta pertence a somente um usuário.
+- O usuário pode ter mais de uma conta, mas uma conta pertence somente um usuário.
