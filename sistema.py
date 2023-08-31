@@ -82,7 +82,8 @@ def criar_usuario(usuarios):
         endereco = f'{logradouro}, {numero} - {bairro} - {cidade}/{sigla}'
         while True:
             confirmacao = input(f'\n\nNome: {nome}\nData de Nascimento: {dt_nascimento}\nCPF: {cpf}\nEndereço: {endereco}\n\nOs dados estão corretos?[S/N]\n')
-            if usuario_repetido(cpf, usuarios):
+            repetido, usuario = usuario_repetido(cpf, usuarios)
+            if repetido:
                 print('\n ### Já existe um usuário com esse CPF! ###')
                 confirmacao == input('\nGostaria de tentar novamente?[S/N]')
                 break
