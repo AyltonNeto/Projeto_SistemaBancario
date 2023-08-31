@@ -99,7 +99,7 @@ def criar_usuario(usuarios):
 def usuario_repetido(cpf, usuarios):
     for usuario in usuarios:
         if usuario['CPF'] == cpf: return True, usuario
-    return False
+    return False, False
 
 def usuario_possui_conta(cpf, usuarios):
     for usuario in usuarios:
