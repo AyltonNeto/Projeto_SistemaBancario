@@ -1,5 +1,7 @@
-# Desafio de Projeto: Criando um Sistema Bancário
+# Desafio de Projeto: Criação de um Sistema Bancário
 Esse desafio foi proposto pela DIO em seu Bootcamp sobre Ciência de Dados.
+Foram propostas 2 Versões com regras que eu resumi abaixo.
+Dada as regras, procurei fazer os scrips do meu jeito.
 
 ## 1ª Versão
 Para a primeira versão do sistema devemos implementar apenas 3 operações: depósito, saque e extrato. 
